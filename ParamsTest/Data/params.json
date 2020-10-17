@@ -1,0 +1,19 @@
+﻿{
+  "groups": [
+    {
+      "id": 1,
+      "mode": "full"
+    },
+    {
+      "id": 2,
+      "mode": "full"
+    },
+    {
+      "id": 3,
+      "mode": "partial",
+      "people": [
+        12, 13, 14
+      ]
+    }
+  ]
+}

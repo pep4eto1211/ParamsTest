@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30524.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParamsTest", "ParamsTest\ParamsTest.csproj", "{3FABD2BF-14C2-40C1-B55C-110D503AB871}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportLibrary1", "ReportLibrary1\ReportLibrary1.csproj", "{EB4673D0-2979-4083-94CB-97576FB6967B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebViewer", "WebViewer\WebViewer.csproj", "{BD81B166-7166-4F47-ADA8-A7CF75667AC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{3FABD2BF-14C2-40C1-B55C-110D503AB871}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FABD2BF-14C2-40C1-B55C-110D503AB871}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FABD2BF-14C2-40C1-B55C-110D503AB871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB4673D0-2979-4083-94CB-97576FB6967B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB4673D0-2979-4083-94CB-97576FB6967B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB4673D0-2979-4083-94CB-97576FB6967B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB4673D0-2979-4083-94CB-97576FB6967B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD81B166-7166-4F47-ADA8-A7CF75667AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD81B166-7166-4F47-ADA8-A7CF75667AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD81B166-7166-4F47-ADA8-A7CF75667AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD81B166-7166-4F47-ADA8-A7CF75667AC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

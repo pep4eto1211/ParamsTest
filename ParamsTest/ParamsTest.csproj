@@ -60,6 +60,8 @@
     <Compile Include="ParamData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report1DataSource.cs" />
+    <Compile Include="SubDataSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

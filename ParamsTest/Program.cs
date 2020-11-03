@@ -19,72 +19,75 @@ namespace ParamsTest
         {
             ParamData param = JsonConvert.DeserializeObject<ParamData>(File.ReadAllText("./Data/params.json"));
 
-            LoadData(param);
+            LoadData(param, File.ReadAllText("./Data/params.json"));
 
             Console.ReadLine();
         }
 
-        private static void LoadData(ParamData param)
+        private static void LoadData(ParamData param, string param_str)
         {
-            int maxDepth = 0;
-            List<EmployeeDTO> groupStructure = new List<EmployeeDTO>();
-            foreach (var item in param.Groups)
-            {
-                Group group = dataContext.Groups.Where(e => e.Id == item.Id).SingleOrDefault();
-                int currentDepth = 0;
+            #region Load Code
+            //int maxDepth = 0;
+            //List<EmployeeDTO> groupStructure = new List<EmployeeDTO>();
+            //foreach (var item in param.Groups)
+            //{
+            //    Group group = dataContext.Groups.Where(e => e.Id == item.Id).SingleOrDefault();
+            //    int currentDepth = 0;
 
-                if (item.Mode == "full")
-                {
-                    foreach (var employee in group.Members)
-                    {
-                        EmployeeDTO employeeDTO = new EmployeeDTO();
-                        employeeDTO.Id = employee.Id;
-                        employeeDTO.Name = employee.Name;
+            //    if (item.Mode == "full")
+            //    {
+            //        foreach (var employee in group.Members)
+            //        {
+            //            EmployeeDTO employeeDTO = new EmployeeDTO();
+            //            employeeDTO.Id = employee.Id;
+            //            employeeDTO.Name = employee.Name;
 
-                        employeeDTO.Parent = BuildStructure(group, 0, out currentDepth);
-                        groupStructure.Add(employeeDTO);
-                    } 
-                }
-                else
-                {
-                    foreach (var employee in dataContext.People.Where(e => item.People.Contains(e.Id)))
-                    {
-                        EmployeeDTO employeeDTO = new EmployeeDTO();
-                        employeeDTO.Id = employee.Id;
-                        employeeDTO.Name = employee.Name;
+            //            employeeDTO.Parent = BuildStructure(group, 0, out currentDepth);
+            //            groupStructure.Add(employeeDTO);
+            //        } 
+            //    }
+            //    else
+            //    {
+            //        foreach (var employee in dataContext.People.Where(e => item.People.Contains(e.Id)))
+            //        {
+            //            EmployeeDTO employeeDTO = new EmployeeDTO();
+            //            employeeDTO.Id = employee.Id;
+            //            employeeDTO.Name = employee.Name;
 
-                        employeeDTO.Parent = BuildStructure(group, 0, out currentDepth);
-                        groupStructure.Add(employeeDTO);
-                    }
-                }
+            //            employeeDTO.Parent = BuildStructure(group, 0, out currentDepth);
+            //            groupStructure.Add(employeeDTO);
+            //        }
+            //    }
 
-                if (currentDepth > maxDepth)
-                {
-                    maxDepth = currentDepth;
-                }
-            }
+            //    if (currentDepth > maxDepth)
+            //    {
+            //        maxDepth = currentDepth;
+            //    }
+            //}
 
-            DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("Name");
-            for (int i = 0; i < maxDepth; i++)
-            {
-                dataTable.Columns.Add("Group" + i.ToString());
-            }
+            //DataTable dataTable = new DataTable();
+            //dataTable.Columns.Add("Name");
+            //for (int i = 0; i < maxDepth; i++)
+            //{
+            //    dataTable.Columns.Add("Group" + i.ToString());
+            //}
 
-            foreach (var item in groupStructure)
-            {
-                DataRow row = dataTable.NewRow();
-                row["Name"] = $"[{item.Id}]{item.Name}";
-                List<GroupDTO> groups = GetGroupList(item.Parent);
-                for (int i = 0; i < groups.Count; i++)
-                {
-                    row["Group" + i.ToString()] = $"[{groups[i].Id}]{groups[i].Name}";
-                }
+            //foreach (var item in groupStructure)
+            //{
+            //    DataRow row = dataTable.NewRow();
+            //    row["Name"] = $"[{item.Id}]{item.Name}";
+            //    List<GroupDTO> groups = GetGroupList(item.Parent);
+            //    for (int i = 0; i < groups.Count; i++)
+            //    {
+            //        row["Group" + i.ToString()] = $"[{groups[i].Id}]{groups[i].Name}";
+            //    }
 
-                dataTable.Rows.Add(row);
-            }
+            //    dataTable.Rows.Add(row);
+            //} 
+            #endregion
 
-            ConsoleTableBuilder.From(dataTable).ExportAndWriteLine();
+            var source = new Report1DataSource();
+            ConsoleTableBuilder.From(source.Report1Dara(param_str).Tables[0]).ExportAndWriteLine();
         }
 
         private static List<GroupDTO> GetGroupList(GroupDTO parent)
